@@ -1,89 +1,54 @@
 #include<iostream>
-#include<bits/stdc++.h>
+#include<algorithm>
 using namespace std;
 
-class node{
-	public:
-		int data;
-		node* next;
-
-		node(int data)
-		{
-			this->data = data;
-			this->next = NULL;
-		}
-};
-
-void insertAtHead(node*&head, int data)
+void getTripletPair(int arr[], int n, int target)
 {
-	node* n = new node(data);
-	head->next = head;
-	head = n;
-}
+    //sort(arr, arr+n);
+    int i=0, left=0, right=0;
+    for(i=0; i<n-3; i++)
+    {
+        left = i+1;
+        right = n-1;
 
-node* reverseIndexTimes(node* head, int k)
-{
-	if(head==NULL or head->next==NULL)
-	{
-		return head;
-	}
+        while(left<right)
+        {
+            int sum = arr[i] + arr[left] + arr[right];
 
-	node* current = head;
-	node* previous = NULL;
-
-	int count = 1;
-
-	while(count<=k and current!=NULL)
-	{
-		node* n = current->next;
-		current->next = previous;
-
-		previous = current;
-		current = n;
-		count++;
-	}
-
-	head->next = reverseIndexTimes(current, k);
-
-	return previous;
-}
-
-void printLinkedList(node*head)
-{
-		node* temp = head;
-
-		while(temp!=NULL)
-		{
-			cout << temp->data << " ";
-			temp = temp->next;
-		}
-		cout << endl;
+            if(sum==target)
+            {
+                cout << arr[i] << ',' << arr[left] << " and " << arr[right]<<endl;
+                left++;
+            }
+            else if(sum>target)
+            {
+                right--;
+            }
+            else//if(sum<target)
+            {
+                left++;
+            }
+        }
+    }
 }
 
 int main() {
+    int n = 4;
+    //cin >> n;
 
-	int n;
-	int k;
+    int arr[] = {2, 2, 2, 2};
 
-	node* head = NULL;
+/*    for(int i=0; i<n; i++)
+    {
+        cin >> arr[i];
+    }*/
 
-	cin >> n >> k;
+    int target = 4;
+//    cin >> target;
 
-	int arr[n];
+    sort(arr, arr+n);
 
-	for(int i=0; i<n; i++)
-	{
-		cin >> arr[i];
-	}
-
-	for(int i=0; i<n; i++)
-	{
-		insertAtHead(head, arr[i]);
-	}
-
-	node* ans = reverseIndexTimes(head, k);
-
-	printLinkedList(ans);
-
-	return 0;
+    getTripletPair(arr, n, target);
+    
+    return 0;
 }
