@@ -48,7 +48,7 @@ int unique(int arr[], int n)
     return 1;
 }
 
-int uniqueNumberTriplet(int arr[], int n)
+/* int uniqueNumberTriplet(int arr[], int n)
 {
     int bitAdder[32] = {0};
 
@@ -77,7 +77,7 @@ int uniqueNumberTriplet(int arr[], int n)
     }
 
     cout << "Unique value is " << decimal << endl;
-}
+} */
 
 int main()
 {

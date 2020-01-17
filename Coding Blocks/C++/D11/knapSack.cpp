@@ -7,7 +7,7 @@ int knapSack(int value[], int weight[], int si, int n, int capacity, int maxValu
     {
         return 0;
     }
-
+ 
     int include = INT_MAX;
     int exclude = INT_MAX;
 

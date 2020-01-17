@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#include<algorithm>
 using namespace std;
 
 int targetSum(int arr[], int s)

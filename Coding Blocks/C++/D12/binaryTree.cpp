@@ -395,6 +395,48 @@ int maxSumPath(node* root)
     return max(left, right);
 }
 
+
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int maxPathSum(TreeNode* root) {
+        
+        int maxSum = INT_MIN;
+        helper(root, maxSum);
+            
+        return maxSum;
+    }
+    
+    int helper(TreeNode* root, int &maxSum)
+    {
+        if(root==NULL)
+        {
+            return 0;
+        }
+        
+        int leftMax = helper(root->left, maxSum);
+        int rightMax = helper(root->right, maxSum);
+        
+        leftMax = max(leftMax, 0);
+        rightMax = max(rightMax, 0);
+        
+        maxSum = max(maxSum, leftMax+rightMax+root->val);
+        
+        return max(leftMax, rightMax) + root->val;
+    }
+};
+//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 int main()
 {
     node* root = NULL;
