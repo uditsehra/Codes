@@ -28,7 +28,7 @@ int getUniqueTriplet(int arr[], int n)
     for(int i=31; i>=0; i++)
     {
         bitArr[i] = bitArr[i]%3;
-        decimal = decimalt + bitArr[i]*multiply;
+        decimal = decimal + bitArr[i]*multiply;
         multiply = multiply<<1;
     }
 }
