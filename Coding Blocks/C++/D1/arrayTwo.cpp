@@ -20,6 +20,7 @@ void subSum(int arr[], int n)
             }
         }
     }
+    cout << max << endl;
 }
 
 int main()
@@ -27,7 +28,7 @@ int main()
     int n = 5;
     
     int arr[n] ={1, 2, -3, 4, -5};
-    
+
     subSum(arr, 5);
 
     return 0;
