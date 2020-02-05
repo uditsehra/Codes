@@ -52,7 +52,7 @@ int getMinTimeToPaintNBoards(int arr[], int n, int k, int time)
             start = mid + 1;
         }
     }
-    cout << (Start * time)%1000003
+    return (start * time)%1000003;
 }
 
 int main()
