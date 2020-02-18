@@ -1,8 +1,8 @@
 #include <iostream>
-
+#include <vector>
 using namespace std;
 
-bool isSafe(int board[][4],int row,int col,int n){
+bool isSafe(vector< vector<int>> board,int row,int col,int n){
 
 	for(int i=0;i<row;i++){
 		if(board[i][col]){
@@ -35,7 +35,7 @@ bool isSafe(int board[][4],int row,int col,int n){
 	return true;
 }
 
-bool NQueens(int board[][4],int row,int n){
+bool NQueens(vector<vector<int>> board,int row,int n){
 	if(row==n){
 		for(int i=0;i<n;i++){
 			for(int j=0;j<n;j++){
@@ -70,7 +70,7 @@ bool NQueens(int board[][4],int row,int n){
 	return false;
 }
 
-void printNQueens(int board[][4],int row,int n){
+void printNQueens(vector<vector<int>> board,int row,int n){
 	if(row==n){
 		for(int i=0;i<n;i++){
 			for(int j=0;j<n;j++){
@@ -101,7 +101,7 @@ void printNQueens(int board[][4],int row,int n){
 	return;
 }
 
-int countNQueens(int board[][4],int row,int n){
+int countNQueens(vector<vector<int>> board,int row,int n){
 	if(row==n){
 		return 1;
 	}
@@ -141,7 +141,7 @@ bool ratInMaze(char maze[][4],int sr,int sc,int er,int ec){
 	return horizontal or vertical;
 }
 
-void printRatInAMaze(char maze[][4],int sol[][4],int sr,int sc,int er,int ec){
+void printRatInAMaze(vector<vector<char>>maze,vector<vector<int>>sol,int sr,int sc,int er,int ec){
 	if(sr==er and sc==ec){
 
 		sol[sr][sc] = 1;
@@ -240,41 +240,55 @@ bool sudokuSolver(int mat[][9],int row,int col,int n){
 
 int main(){
 
-	int board[4][4] = {0};
-	int n = 4;
+	//int n = 4;
+	//vector< vector<int>> board(n, vector<int>(n));
 
 	// cout<<NQueens(board,0,n)<<endl;
 
 	// printNQueens(board,0,n);
 
-	// cout<<countNQueens(board,0,n)<<endl;
+	//cout<<countNQueens(board,0,n)<<endl;
 
-	// char maze[][4] = {
- //     	{'0','0','0','0'},
- //     	{'0','0','0','0'},
- //     	{'0','0','X','0'},
- //     	{'0','X','0','0'},
- //     };
+	int n , m;
+	cin >> n >> m;
+
+	vector<vector<char>>maze(n, vector<char>(m));
+	
+	for(int i=0; i<n; i++)
+	{
+		for(int j=0; j<m; j++)
+		{
+			cin >> maze[i][j];
+		}
+	}
 
  //    // cout<<ratInMaze(maze,0,0,3,3)<<endl;
 
- //    int sol[4][4] = {0};
+    vector<vector<int>>sol(n, vector<int>(m));
 
- //    printRatInAMaze(maze,sol,0,0,3,3);
+	for(int i=0; i<n; i++)
+	{
+		for(int j=0; j<m;j++)
+		{
+			cout << sol[i][j]<< " ";
+		}
+		cout << endl;
+	}
+    // printRatInAMaze(maze,sol,0,0,3,3);
 
-	int mat[9][9] = {
-            {5,3,0,0,7,0,0,0,0},
-            {6,0,0,1,9,5,0,0,0},
-            {0,9,8,0,0,0,0,6,0},
-            {8,0,0,0,6,0,0,0,3},
-            {4,0,0,8,0,3,0,0,1},
-            {7,0,0,0,2,0,0,0,6},
-            {0,6,0,0,0,0,2,8,0},
-            {0,0,0,4,1,9,0,0,5},
-            {0,0,0,0,8,0,0,7,9}
-    };
+/*	int mat[9][9] = {
+						{5, 3, 0, 0, 7, 0, 0, 0, 0},
+						{6, 0, 0, 1, 9, 5, 0, 0, 0},
+						{0, 9, 8, 0, 0, 0, 0, 6, 0},
+						{8, 0, 0, 0, 6, 0, 0, 0, 3},
+						{4, 0, 0, 8, 0, 3, 0, 0, 1},
+						{7, 0, 0, 0, 2, 0, 0, 0, 6},
+						{0, 6, 0, 0, 0, 0, 2, 8, 0},
+						{0, 0, 0, 4, 1, 9, 0, 0, 5},
+						{0, 0, 0, 0, 8, 0, 0, 7, 9},
+					};
 
     cout<<sudokuSolver(mat,0,0,9)<<endl;
-
+*/
 	return 0;
 }
