@@ -21,7 +21,7 @@ int getMaximumStudents(int n, int m, int x, int y)
     {
         int mid = minStudents + (maxStudents - minStudents)/2;//start + (end - start)/2;
 
-        if(isPossible(n, m, x,, y,, mid))
+        if(isPossible(n, m, x,, y, mid))
         {
             
         }

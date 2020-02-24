@@ -19,6 +19,10 @@ Sample Input
 Sample Output
 1
 2
+
+
+
+This solution given below will give you TLE time limit exceeded so you have to apply Dynamic Programming.
 */
 
 #include<iostream>

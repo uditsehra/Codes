@@ -77,15 +77,15 @@ void uniqueNumberTriplet(int arr[],int n){
 
 int main(){
 
-	// int arr[] = {1,2,3,4,5,7,4,3,2,1};
-	// int n = 10;
+	 int arr[] = {1,2,3,4,5,7,4,3,2,1};
+	 int n = 10;
 
-	// uniqueNumberPair(arr,n);
+	 uniqueNumberPair(arr,n);
 
-	int arr[] = {1,1,1,2,2,2,5,5,5,4};
-	int n = 10;
+	//int arr[] = {1,1,1,2,2,2,5,5,5,4};
+	//int n = 10;
 
-	uniqueNumberTriplet(arr,n);
+	//uniqueNumberTriplet(arr,n);
 
 	return 0;
 }
