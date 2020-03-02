@@ -10,11 +10,11 @@ bool flag = 1;
 string productionList = "";
 string initialInput;
 
-void error()
+void geterror(char x)
 {
-    cout << "Error()\nThe given input string is invalid" << endl;
+    cout << "Error with " << x <<" the given input string is invalid" << endl;
     flag = 0;
-        return;
+    return;
 }
 
 /*
@@ -45,7 +45,7 @@ bool isTerminal(char x)
         return false;
 }
 
-bool getSolution(string input, string production, string solution)
+/* bool getSolution(string input, string production, string solution)
 {
         char a, x;
         int k=0;
@@ -71,26 +71,26 @@ bool getSolution(string input, string production, string solution)
             
         }
         return true;
-}
+} */
 
-void Algo(string input, string production, string solution)
+bool Algo(string input, string production, string solution)
 {
-        char x, a;
-        int j = 0;
-        //string currentProduction;
-        cout <<"Production is: S -> " <<  production << endl;
+    char x, a;
+    int j = 0;
+    //string currentProduction;
+    //cout <<"Production is: S -> " <<  production << endl;
 
-    for(int i=0; i<=production.length(); i++)
+    for(int i=0; i<=production.length()-1; i++)
     {
         x = production[i];
         a = input[j];
 
         if(isTerminal(x)) //This will check if the x is a non terminal means if it's a production symbol or not.
         {
-                int numOfStates = ProductionMap[x].size();
+            int numOfStates = ProductionMap[x].size();
 
-                for(int states = 0; states<numOfStates; states++)
-                {
+            for(int states = 0; states<numOfStates; states++)
+            {
                         //cout<< "Production is " << x << "-> ";
                         //string restOfParentProduction = production.substr(i+1);
                         string productionToWorkOn = ProductionMap[x][states];
@@ -105,18 +105,19 @@ void Algo(string input, string production, string solution)
                         string restOfString = input.substr(j);
 
                         cout << "Production is " << x << "->" << productionToWorkOn << endl;
-                        ans = getSolution(restOfString, productionToWorkOn, solution);
+                        ans = Algo(restOfString, productionToWorkOn, temp);
 
                         if(ans)
                         {
+                                solution = temp;
                                 break;
                         }
                         else
                         {
                                 cout << "Backtrack" << endl;
                         }
+                        j++;
                 }
-                j++;
          }
         else if(x == a)
         {
@@ -124,11 +125,14 @@ void Algo(string input, string production, string solution)
                 solution += x;
                 cout << a << " is matched" << endl;
         }
-        else\
+        else
         {
-            error();
+            geterror(x);
+            return false;
         }
     }
+
+    return true;
 }
 
 int main()
@@ -164,12 +168,12 @@ int main()
         string currentProduction = ProductionMap[initialProduction][0];
 
         cout << endl << endl << endl << endl;
+        cout << "Production is " << initialProduction << " -> " << currentProduction << endl;
+        bool ans = Algo(input, currentProduction, solution);
 
-        Algo(input, currentProduction, solution);
-
-        if(flag)
+        if(ans)
         {
-                cout << "The given input string "<< input << " is a valid string and it's mathich with our solution ";
+                cout << "The given input string "<< input << " is a valid string and it's mathing with our solution: "<<solution;
         }
         else
         {
