@@ -80,7 +80,7 @@ bool Algo(string input, string production, string solution)
     //string currentProduction;
     //cout <<"Production is: S -> " <<  production << endl;
 
-    for(int i=0; i<=production.length()-1; i++)
+    for(int i=0; i<=production.length(); i++)
     {
         x = production[i];
         a = input[j];
@@ -110,13 +110,13 @@ bool Algo(string input, string production, string solution)
                         if(ans)
                         {
                                 solution = temp;
+                                j += lengthOfProduction;
                                 break;
                         }
                         else
                         {
                                 cout << "Backtrack" << endl;
                         }
-                        j++;
                 }
          }
         else if(x == a)
@@ -171,7 +171,7 @@ int main()
         cout << "Production is " << initialProduction << " -> " << currentProduction << endl;
         bool ans = Algo(input, currentProduction, solution);
 
-        if(ans)
+        /*if(ans)
         {
                 cout << "The given input string "<< input << " is a valid string and it's mathing with our solution: "<<solution;
         }
@@ -179,7 +179,8 @@ int main()
         {
                 cout << "The given input string is invalid \n" << input << " is invalid not matching with our solutio";
         }
-
+        */
+       cout << "\n" << solution << endl;
     return 0;
 }
 
