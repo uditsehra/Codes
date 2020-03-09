@@ -1,0 +1,27 @@
+
+#include<bits/stdc++.h>
+#include<vector>
+#include<unordered_map>
+
+using namespace std;
+
+unordered_map<char, vector<string>> productionMap;
+string productionList = "";
+
+
+int main()
+{
+        int numOfProductionInGrammer;
+        cout << "Enter the number of productions of a grammar."<< endl;
+        cin >> numOfProductionInGrammer;
+
+        while(numOfProducitonInGrammer--)
+        {
+
+        }
+
+        return 0;
+}
+
+
+
